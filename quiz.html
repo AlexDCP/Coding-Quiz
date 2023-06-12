@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        rel="nofollow" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="./assets/stylesheet.css" />
+    <title>Coding-Quiz</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron text-center">
+            <h1 class="text-info">JavaScript Coding Quiz</h1>
+            <p class="text-info">The JavaScript coding quiz challenges participants to demonstrate their knowledge of key concepts such as variables, loops, 
+                and functions through a series of questions.</p>
+        </div>
+    </div>
+
+    <div class="container text-center">
+        <h1 class="welcome">Good Luck!</h1>
+        <h2 id="countdown"></h2>
+        <p id="main"></p>
+    </div>
+
+    <div class="container mt-sm-5 my-1">
+        <div class="question ml-sm-5 pl-sm-5 pt-2">
+            <div class="py-2 h5">
+                <b id="question"></b>
+            </div>
+            <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+                <label class="options" id="choice1">
+                    <input type="radio" name="radio" id="input1"/>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="options" id="choice2">
+                    <input type="radio" name="radio" id="input2"/>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="options" id="choice3">
+                    <input type="radio" name="radio" id="input3"/>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="options" id="choice4">
+                    <input type="radio" name="radio" id="input4"/>
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </div>
+        <div class="d-flex align-items-center pt-3">
+            <div class="ml-auto mr-sm-5">
+                <button class="btn btn-success" id="next">Next</button>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script src="./assets/script.js"></script>
+    <script src="./assets/timer.js"></script>
+</body>
+
+</html>
