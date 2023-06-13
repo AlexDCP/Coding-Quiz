@@ -7,6 +7,9 @@ var choice4 = document.getElementById("choice4");
 // var input2 = document.getElementById("input2");
 // var input3 = document.getElementById("input3");
 // var input4 = document.getElementById("input4");
+var timerEl = document.getElementById("countdown");
+var timeLeft = 75;
+var questionIndex = 0;
 
 var quiz = [
     {
@@ -56,7 +59,7 @@ var quiz = [
     },
 ];
 
-var questionIndex = 0;
+
 
 function displayQuestions() {
     questions.textContent = quiz[questionIndex].question;
@@ -85,28 +88,32 @@ function displayQuestions() {
 function checkAnswer() {
     if (document.getElementById("input1").checked) {
         if (
-            document.getElementById("input1").value ? quiz[questionIndex].answer : false
+            document.getElementById("input1").value === quiz[questionIndex].answer ||
+            (timeLeft = timeLeft -15)
         ) {
             questionIndex++;
             displayQuestions();
         }
     } else if (document.getElementById("input2").checked) {
         if (
-            document.getElementById("input2").value ? quiz[questionIndex].answer : false
+            document.getElementById("input2").value === quiz[questionIndex].answer ||
+            (timeLeft = timeLeft -15)
         ) {
             questionIndex++;
             displayQuestions();
         }
     } else if (document.getElementById("input3").checked) {
         if (
-            document.getElementById("input3").value ? quiz[questionIndex].answer : false
+            document.getElementById("input3").value === quiz[questionIndex].answer ||
+            (timeLeft = timeLeft -15)
         ) {
             questionIndex++;
             displayQuestions();
         }
     } else if (document.getElementById("input4").checked) {
         if (
-            document.getElementById("input4").value ? quiz[questionIndex].answer : false
+            document.getElementById("input4").value === quiz[questionIndex].answer ||
+            (timeLeft = timeLeft -15)
         ) {
             questionIndex++;
             displayQuestions();
@@ -114,11 +121,8 @@ function checkAnswer() {
     }
 }
 
-var timerEl = document.getElementById("countdown");
 
 function countdown() {
-    var timeLeft = 75;
-
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
     var timeInterval = setInterval(function () {
         // As long as the `timeLeft` is greater than 1
