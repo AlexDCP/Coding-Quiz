@@ -3,10 +3,7 @@ var options = document.getElementById("choice");
 var choice2 = document.getElementById("choice2");
 var choice3 = document.getElementById("choice3");
 var choice4 = document.getElementById("choice4");
-// var input1 = document.getElementById("input1");
-// var input2 = document.getElementById("input2");
-// var input3 = document.getElementById("input3");
-// var input4 = document.getElementById("input4");
+
 var timerEl = document.getElementById("countdown");
 var timeLeft = 75;
 var questionIndex = 0;
@@ -15,8 +12,8 @@ var quiz = [
     {
         question: "1. When referring to a function, scope is __?",
         choices: [
-            "Where the function is visible and accessible.",
             "How far the function goes.",
+            "Where the function is visible and accessible.",
             "How long the function is.",
             "The type of function it is (i.e. async...).",
         ],
@@ -62,72 +59,82 @@ var quiz = [
 function displayQuestions() {
     questions.textContent = quiz[questionIndex].question;
     choice1.innerHTML = `
-    ${quiz[questionIndex].choices[0]} 
+    <p>${quiz[questionIndex].choices[0]}</p>
     <input type="radio" name="radio" value="${quiz[questionIndex].choices[0]}" id="input1"/>
     <span class="checkmark"></span>
     `;
     choice2.innerHTML = `
-    ${quiz[questionIndex].choices[1]} 
+    <p>${quiz[questionIndex].choices[1]}</p>
     <input type="radio" name="radio" id="input2"/>
     <span class="checkmark"></span>
     `;
     choice3.innerHTML = `
-    ${quiz[questionIndex].choices[2]} 
+    <p>${quiz[questionIndex].choices[2]}</p>
     <input type="radio" name="radio" id="input3"/>
     <span class="checkmark"></span>
     `;
     choice4.innerHTML = `
-    ${quiz[questionIndex].choices[3]} 
+    <p>${quiz[questionIndex].choices[3]}</p>
     <input type="radio" name="radio" id="input4"/>
     <span class="checkmark"></span>
     `;
 }
 
 function checkAnswer() {
-    if (document.getElementById("input1").checked) {
-        if (
-            document.getElementById("input1").value === quiz[questionIndex].answer
-        ) {
-            questionIndex++;
-            displayQuestions();
-        } else {
-            timeLeft = timeLeft - 15;
-            questionIndex++;
-            displayQuestions();
+    // checks to see if the input 1 is selected, and does so for each input below
+    if (questionIndex < quiz.length -1) {
+        if (document.getElementById("input1").checked) {
+            // if the value is the correct answer, it updates the index point and cycles questions
+
+            if (
+                document.getElementById("choice1").querySelector('p').innerText === quiz[questionIndex].answer
+            ) {
+                questionIndex++;
+                displayQuestions();
+                // if the answer is wrong it will deduct time from the timer, and cycle questions along with adding an index point
+            } else {
+                timeLeft = timeLeft - 10;
+                questionIndex++;
+                displayQuestions();
+            }
+        } if (document.getElementById("input2").checked) {
+            console.log(document.getElementById("choice2").querySelector('p').innerText);
+            console.log(quiz[questionIndex].answer);
+            if (
+                document.getElementById("choice2").querySelector('p').innerText === quiz[questionIndex].answer
+            ) {
+                questionIndex++;
+                displayQuestions();
+            } else {
+                timeLeft = timeLeft - 10;
+                questionIndex++;
+                displayQuestions();
+            }
+        } if (document.getElementById("input3").checked) {
+            if (
+                document.getElementById("choice3").querySelector('p').innerText === quiz[questionIndex].answer
+            ) {
+                questionIndex++;
+                displayQuestions();
+            } else {
+                timeLeft = timeLeft - 10;
+                questionIndex++;
+                displayQuestions();
+            }
+        } if (document.getElementById("input4").checked) {
+            if (
+                document.getElementById("choice4").querySelector('p').innerText === quiz[questionIndex].answer
+            ) {
+                questionIndex++;
+                displayQuestions();
+            } else {
+                timeLeft = timeLeft - 10;
+                questionIndex++;
+                displayQuestions();
+            }
         }
-    } else if (document.getElementById("input2").checked) {
-        if (
-            document.getElementById("input2").value === quiz[questionIndex].answer
-        ) {
-            questionIndex++;
-            displayQuestions();
-        } else {
-            timeLeft = timeLeft - 15;
-            questionIndex++;
-            displayQuestions();
-        }
-    } else if (document.getElementById("input3").checked) {
-        if (
-            document.getElementById("input3").value === quiz[questionIndex].answer
-        ) {
-            questionIndex++;
-            displayQuestions();
-        } else {
-            timeLeft = timeLeft - 15;
-            questionIndex++;
-            displayQuestions();
-        }
-    } else if (document.getElementById("input4").checked) {
-        if (
-            document.getElementById("input4").value === quiz[questionIndex].answer
-        ) {
-            questionIndex++;
-            displayQuestions();
-        } else {
-            timeLeft = timeLeft - 15;
-            questionIndex++;
-            displayQuestions();
-        }
+    } else {
+        window.location.href = 'highscores.html'
     }
 }
 
