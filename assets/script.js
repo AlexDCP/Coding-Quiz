@@ -134,9 +134,12 @@ function checkAnswer() {
             }
         }
     } else {
+        localStorage.setItem('highscore', timeLeft);
         window.location.href = 'highscores.html'
     }
 }
+
+
 
 function countdown() {
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
@@ -162,5 +165,7 @@ function countdown() {
 
 countdown();
 displayQuestions();
+
+
 
 document.getElementById("next").addEventListener("click", checkAnswer);
