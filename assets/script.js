@@ -3,10 +3,10 @@ var options = document.getElementById("choice");
 var choice2 = document.getElementById("choice2");
 var choice3 = document.getElementById("choice3");
 var choice4 = document.getElementById("choice4");
-var input1 = document.getElementById('input1');
-var input2 = document.getElementById('input2');
-var input3 = document.getElementById('input3');
-var input4 = document.getElementById('input4');
+// var input1 = document.getElementById("input1");
+// var input2 = document.getElementById("input2");
+// var input3 = document.getElementById("input3");
+// var input4 = document.getElementById("input4");
 
 var quiz = [
     {
@@ -84,56 +84,63 @@ function displayQuestions() {
 
 function checkAnswer() {
     if (document.getElementById("input1").checked) {
-        if (document.getElementById("input1").value === quiz[questionIndex].answer) {
+        if (
+            document.getElementById("input1").value ? quiz[questionIndex].answer : false
+        ) {
             questionIndex++;
             displayQuestions();
         }
     } else if (document.getElementById("input2").checked) {
-        if (document.getElementById("input2").value === quiz[questionIndex].answer) {
+        if (
+            document.getElementById("input2").value ? quiz[questionIndex].answer : false
+        ) {
             questionIndex++;
             displayQuestions();
         }
     } else if (document.getElementById("input3").checked) {
-        if (document.getElementById("input3").value === quiz[questionIndex].answer) {
+        if (
+            document.getElementById("input3").value ? quiz[questionIndex].answer : false
+        ) {
             questionIndex++;
             displayQuestions();
         }
     } else if (document.getElementById("input4").checked) {
-        if (document.getElementById("input4").value === quiz[questionIndex].answer) {
+        if (
+            document.getElementById("input4").value ? quiz[questionIndex].answer : false
+        ) {
             questionIndex++;
             displayQuestions();
         }
     }
-    };
+}
 
-    var timerEl = document.getElementById('countdown');
+var timerEl = document.getElementById("countdown");
 
-    function countdown() {
-        var timeLeft = 60;
+function countdown() {
+    var timeLeft = 75;
 
-        // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-        var timeInterval = setInterval(function () {
-            // As long as the `timeLeft` is greater than 1
-            if (timeLeft > 1) {
-                // Set the `textContent` of `timerEl` to show the remaining seconds
-                timerEl.textContent = timeLeft + ' seconds remaining';
-                // Decrement `timeLeft` by 1
-                timeLeft--;
-            } else if (timeLeft === 1) {
-                // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
-                timerEl.textContent = timeLeft + ' second remaining';
-                timeLeft--;
-            } else {
-                // Once `timeLeft` gets to 0, set `timerEl` to an empty string
-                timerEl.textContent = '';
-                // Use `clearInterval()` to stop the timer
-                clearInterval(timeInterval);
-            }
-        }, 1000);
-    }
+    // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
+    var timeInterval = setInterval(function () {
+        // As long as the `timeLeft` is greater than 1
+        if (timeLeft > 1) {
+            // Set the `textContent` of `timerEl` to show the remaining seconds
+            timerEl.textContent = timeLeft + " seconds remaining";
+            // Decrement `timeLeft` by 1
+            timeLeft--;
+        } else if (timeLeft === 1) {
+            // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
+            timerEl.textContent = timeLeft + " second remaining";
+            timeLeft--;
+        } else {
+            // Once `timeLeft` gets to 0, set `timerEl` to an empty string
+            timerEl.textContent = "";
+            // Use `clearInterval()` to stop the timer
+            clearInterval(timeInterval);
+        }
+    }, 1000);
+}
 
-    countdown();
+countdown();
+displayQuestions();
 
-    document.getElementById("next").addEventListener("click", checkAnswer);
-
-    displayQuestions();
+document.getElementById("next").addEventListener("click", checkAnswer);
